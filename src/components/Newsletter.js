@@ -1,47 +1,51 @@
-import { Alert , Row , Col } from "react-bootstrap";
-import { useState , useEffect } from "react";
-import e from "cors";
+import { Alert, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
-export const Newsletter = ({ onValidated , status , message }) => {
-    const [email , setEmail] = useState ('');
-    
-    useEffect (() => {
-        if (status === 'sucess') clearFields();
-    }, [status])
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        email &&
-        email.indexOf("@") > -1 &&
-        onValidated ({
-            EMAIL: email
-        })
-    }
+export const Newsletter = ({ onValidated, status, message }) => {
+  const [email, setEmail] = useState("");
 
-    const clearFields = () => {
-        setEmail('')
+  useEffect(() => {
+    if (status === "success") clearFields();
+  }, [status]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the form from refreshing the page
+    if (email && email.indexOf("@") > -1) {
+      onValidated({
+        EMAIL: email,
+      });
     }
-    
-    return (
-        <Col lg={12}>
-            <div className="newsletter-bx">
-                <Row>
-                    <Col lg={12} md={6} xl={5}>
-                        <h3> Subscribe to our Newsletter </h3>
-                       {status === 'sending' &&  <Alert>Sending...</Alert>}   
-                        {status === 'error' &&  <Alert variant='danger'> {message} </Alert>}    
-                        {status === 'success' &&  <Alert variant='success'> {message} </Alert>}    
-                    </Col>
-                    <Col md={6} lg={7} >
-                        <form onSubmit={handleSubmit}>
-                            <div className="new-email-bx">
-                                <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email Adress" />
-                                <button type="submit"> Submit </button>
-                            </div>
-                        </form>
-                    </Col>
-                </Row>
-            </div>
-        </Col>
-    )
-}
+  };
+
+  const clearFields = () => {
+    setEmail("");
+  };
+
+  return (
+    <Col lg={12}>
+      <div className="newsletter-bx">
+        <Row>
+          <Col lg={12} md={6} xl={5}>
+            <h3>Subscribe to our Newsletter</h3>
+            {status === "sending" && <Alert variant="info">Sending...</Alert>}
+            {status === "error" && <Alert variant="danger">{message}</Alert>}
+            {status === "success" && <Alert variant="success">{message}</Alert>}
+          </Col>
+          <Col md={6} lg={7}>
+            <form onSubmit={handleSubmit}>
+              <div className="new-email-bx">
+                <input
+                  value={email}
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email Address"
+                />
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </Col>
+        </Row>
+      </div>
+    </Col>
+  );
+};

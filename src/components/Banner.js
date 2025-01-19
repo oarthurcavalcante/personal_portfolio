@@ -73,7 +73,7 @@ useEffect(() => {
                         </TrackVisibility>
                     </Col>
                     <Col xs={12} md={6} xl={5}>
-                        <img src={HeaderImg} alt=" " />
+                        <img src={HeaderImg} alt="first image " />
                     </Col>
                 </Row>
             </Container>
