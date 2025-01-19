@@ -1,28 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
 import colorSharp from "../assets/img/Color Sharp.png"
 
 export const Experience = () => {
-    const responsive = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1
-        }
-      };
-
       return (
         <section className="experience" id="experience">
             <Container>
@@ -110,7 +89,7 @@ export const Experience = () => {
                     </Col>
                 </Row>
             </Container>
-            <img className="background-image-left" src={colorSharp} />
+            <img className="background-image-left" alt="background image left" src={colorSharp} />
         </section>
 
     )
